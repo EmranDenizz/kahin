@@ -43,11 +43,11 @@ class _DailyProphecyState extends State<DailyProphecy> {
     'PARA: Bugün, başkalarına yardım, destek ve hizmet duygunuzun yüksek olduğu bir gün olabilir, hayır, bağış işlerinde yer alabilirsiniz.',
     'PARA: Bugün kendinize güveniniz oldukça yüksek, ancak bu size pek fayda getirmeyebilir, bağlantılarınız size verdikleri destekten şüphelenebilirler. Sakin hareket edin, bir adım geri durun, ve paradan çok sağlığınızla ilgilenin.',
     'PARA: Para kaynaklarımız ile ilgili detaylar bu dönem dikkat etmelisiniz. Ayrıca maddi konularda ve harcamalarda uzun süredir sizi meşgul eden bir konuda karara varabilirsiniz, yakınlarınızdan veya eşinizden karar alırken yardım isteyin.',
-    'TAVSİYE: Bugün meraklı kişiliğini ön plana çıkartarak insanlara soru sormaktan çekinme ',
-    'TAVSİYE: Bugün daha önce hiç fark etmediğin şeylerin hep orada olduğunu fark edebilirsin, sadece biraz daha dikkatli olmaya çalış',
-    'TAVSİYE: Bugün ikili ilişkilerinde daha aktif ve verici olmaya çalışabilirsin, aynı fikirde olduğun insanları daha dikkatli dinlemeye ve sorgulamaya başla',
-    'TAVSİYE: Bugün sadece işine odaklan, dikkatini dağıtacak her türlü nesne ve sosyal medyadan uzaklaşmak kendini daha mutlu hissettirebilir',
-    'TAVSİYE: Bugün tek başına biraz yürüyüş yap, çocukluğunda dinlediğin şarkıları aç ve o zamanlar oynadığın oyunları hayal et'
+    'SAĞLIK: Bugün biraz baş ağrısı çekebilirsin. Sakin kal ve gülümse iki gözüm. Bu hayat Ronaldo ya bile acımadı sonuçta.',
+    'SAĞLIK: Bugün daha önce hiç fark etmediğin şeylerin hep orada olduğunu fark edebilirsin, sadece biraz daha dikkatli olmaya çalış',
+    'SAĞLIK: Bugün ikili ilişkilerinde daha aktif ve verici olmaya çalışabilirsin, aynı fikirde olduğun insanları daha dikkatli dinlemeye ve sorgulamaya başla',
+    'SAĞLIK: Bugün sadece işine odaklan, dikkatini dağıtacak her türlü nesne ve sosyal medyadan uzaklaşmak kendini daha mutlu hissettirebilir',
+    'SAĞLIK: Bugün tek başına biraz yürüyüş yap, çocukluğunda dinlediğin şarkıları aç ve o zamanlar oynadığın oyunları hayal et'
   ];
 
   @override
@@ -69,7 +69,7 @@ class _DailyProphecyState extends State<DailyProphecy> {
               child: Image.asset('images/falci.png'),
             ),
             Card(
-              margin: EdgeInsets.only(left: 30, right: 30),
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
               child: ListTile(
                 leading: Icon(
                   Icons.favorite,
@@ -84,6 +84,52 @@ class _DailyProphecyState extends State<DailyProphecy> {
                 },
               ),
             ),
+            Card(
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+              child: ListTile(
+                leading: Icon(
+                  Icons.account_balance,
+                  color: Color(0xffFFD54F),
+                ),
+                title:
+                    Text('PARA DURUMU', style: TextStyle(color: Colors.black)),
+                onTap: () {
+                  setState(() {
+                    options = Random().nextInt(5) + 6;
+                  });
+                },
+              ),
+            ),
+            Card(
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+              child: ListTile(
+                leading: Icon(
+                  Icons.healing,
+                  color: Color(0xff26C6DA),
+                ),
+                title: Text(
+                  'SAĞLIK DURUMU',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onTap: () {
+                  setState(() {
+                    options = Random().nextInt(5) + 11;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              width: double.infinity,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                child: Text(
+                  dailyProphecy[options],
+                  style: TextStyle(fontSize: 13, color: Colors.red),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
           ],
         ),
       ),
